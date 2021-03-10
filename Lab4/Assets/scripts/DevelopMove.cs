@@ -10,6 +10,8 @@ public class DevelopMove : MonoBehaviour
     public float runSpeed = 10f;
     private float moveLimiter = 0.7f;
 
+    public GameObject projectile;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +24,14 @@ public class DevelopMove : MonoBehaviour
     {
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
+
+        if (Input.GetKeyDown("space"))
+        {
+            //Quaternion.Euler(0,0,90 + transform.rotation.z)
+            GameObject clone = Instantiate(projectile, transform.position, transform.rotation);
+            clone.transform.Rotate(new Vector3(0,0,90));
+            clone.GetComponent<Rigidbody2D>().velocity = clone.transform.right * 20;
+        }
 
     }
 
