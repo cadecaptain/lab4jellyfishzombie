@@ -168,4 +168,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   runSpeed: 10
-  projectile: {fileID: 0}
+  projectile: {fileID: 177318343377325780, guid: c96a7925e35428d44bddb104977bab4a, type: 3}
