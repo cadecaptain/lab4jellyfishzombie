@@ -30,4 +30,13 @@ public class FollowSteer : MonoBehaviour
 			q, Time.deltaTime * rotationSpeed);
 
 	}
+	private void OnCollisionEnter2D(Collision2D collider)
+	{
+		Debug.Log("f");
+		if (collider.gameObject.CompareTag("Player"))
+		{
+			Debug.Log("s");
+			GameManager.Instance.PlayerHit();
+		}
+	}
 }

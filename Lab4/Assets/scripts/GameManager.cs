@@ -32,6 +32,8 @@ public class GameManager : MonoBehaviour
     public GameObject jellysave3;
     public GameObject dest;
     private GameObject instance;
+    public Image[] hearts;
+    private int playerLife = 3;
 
     public GameObject instructionsText;
     private void Awake()
@@ -102,6 +104,9 @@ public class GameManager : MonoBehaviour
       
         instructionsText.GetComponent<TextMeshProUGUI>().text = "";
         sourcesText.GetComponent<TextMeshProUGUI>().text = "";
+        foreach(Image i in hearts ){
+            i.enabled = true;
+        }
        
         
     }
@@ -158,6 +163,17 @@ public class GameManager : MonoBehaviour
     public void hidedialogue()
     {
         dialoguebox.SetActive(false);
+    }
+    public void PlayerHit()
+    {
+
+        playerLife--;
+        hearts[playerLife].enabled = false;
+        if (playerLife == 0)
+        {
+            NextScene("centralhub",new Vector3(0,0,0));
+        }
+
     }
 
     public void IncScore(int ds)
