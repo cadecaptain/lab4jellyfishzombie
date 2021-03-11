@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Level1 : MonoBehaviour
+
 {
     // Start is called before the first frame update
     void Start()
@@ -22,7 +23,7 @@ public class Level1 : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
 
-            StartCoroutine(LoadYourAsyncScene("level1"));
+            StartCoroutine(LoadYourAsyncScene("Level1"));
         }
 
     }
