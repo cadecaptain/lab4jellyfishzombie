@@ -12,6 +12,7 @@ public class DevelopMove : MonoBehaviour
 
     public GameObject projectile;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,11 +26,47 @@ public class DevelopMove : MonoBehaviour
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
 
+        
+
         if (Input.GetKeyDown("space"))
         {
             //Quaternion.Euler(0,0,90 + transform.rotation.z)
             GameObject clone = Instantiate(projectile, transform.position, transform.rotation);
-            clone.transform.Rotate(new Vector3(0,0,90));
+
+            if (horizontal > 0 && vertical > 0)
+            {
+                clone.transform.Rotate(new Vector3(0, 0, 45));
+            }
+            else if (horizontal > 0 && vertical < 0)
+            {
+                clone.transform.Rotate(0, 0, -45);
+            }
+            else if (horizontal < 0 && vertical > 0)
+            {
+                clone.transform.Rotate(0, 0, 135);
+                Debug.Log(",");
+            }
+            else if (horizontal < 0 && vertical < 0)
+            {
+                clone.transform.Rotate(0, 0, -135);
+            }
+            else if (horizontal > 0)
+            {
+                clone.transform.Rotate(0, 0, 0);
+            }
+            else if (horizontal < 0)
+            {
+                clone.transform.Rotate(0, 0, 180);
+            }
+            else if (vertical < 0)
+            {
+                clone.transform.Rotate(0, 0, 270);
+            }
+            else
+            {
+                clone.transform.Rotate(new Vector3(0, 0, 90));
+            }
+
             clone.GetComponent<Rigidbody2D>().velocity = clone.transform.right * 20;
         }
 
