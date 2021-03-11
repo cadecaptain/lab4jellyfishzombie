@@ -24,6 +24,7 @@ public class Level1 : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Player"))
         {
+            GameManager.Instance.JellyNo();
             GameManager.Instance.NextScene("level1", whereTo);
            
         }

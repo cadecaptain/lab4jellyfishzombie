@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class jellysave : MonoBehaviour
 {
-
+    public int num = 1;
     public Vector3 whereTo;
 
     // Start is called before the first frame update
@@ -24,7 +24,12 @@ public class jellysave : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Player"))
         {
+            
+            GameManager.Instance.IncScore(1);
+            GameManager.Instance.number(num);
+            GameManager.Instance.Jelly1();
             GameManager.Instance.NextScene("centralhub", whereTo);
+            
 
         }
 

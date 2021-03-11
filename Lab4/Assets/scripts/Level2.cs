@@ -23,6 +23,7 @@ public class Level2 : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Player"))
         {
+            GameManager.Instance.JellyNo();
             GameManager.Instance.NextScene("level2", whereTo);
 
         }

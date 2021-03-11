@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     public GameObject canvas;
     public GameObject events;
     public GameObject title;
+    private int score = 0;
+    private int numm = 0;
     public GameObject backgroundImage;
     public GameObject sourcesText;
     public GameObject player;
@@ -24,6 +26,12 @@ public class GameManager : MonoBehaviour
     public GameObject projectile;
     public GameObject dialoguebox;
     public GameObject dialoguetext;
+    public TextMeshProUGUI scoreText;
+    public GameObject jellysave1;
+    public GameObject jellysave2;
+    public GameObject jellysave3;
+    public GameObject dest;
+    private GameObject instance;
 
     public GameObject instructionsText;
     private void Awake()
@@ -89,6 +97,7 @@ public class GameManager : MonoBehaviour
         sourcesButton.SetActive(false);
         title.SetActive(false);
         player.SetActive(true);
+        dest.SetActive(true);
         StartCoroutine(LoadYourAsyncScenee("centralhub"));
       
         instructionsText.GetComponent<TextMeshProUGUI>().text = "";
@@ -150,5 +159,91 @@ public class GameManager : MonoBehaviour
     {
         dialoguebox.SetActive(false);
     }
+
+    public void IncScore(int ds)
+    {
+        score += ds;
+        scoreText.text = "Jellyfish saved: " + score + "/3";
+        
+        
+    }
+
+    public void number(int num)
+    {
+        if (numm == 0)
+        {
+            numm = num;
+        }
+    }
+
+    public void Jelly1()
+    {
+        
+        jellysave1.SetActive(true);
+        dest.SetActive(true);
+        if (score == 2 && numm == 3){
+            jellysave3.SetActive(true);
+        } if (score == 2 && numm == 2)
+        {
+            jellysave2.SetActive(true);
+        }
+        if (score == 3){
+            jellysave2.SetActive(true);
+            jellysave3.SetActive(true);
+            dest.SetActive(false);
+        }
+    }
+    public void Jelly2()
+    {
+
+        jellysave2.SetActive(true);
+        dest.SetActive(true);
+        if (score == 2 && numm == 1)
+        {
+            jellysave1.SetActive(true);
+        }
+        if (score == 2 && numm == 3)
+        {
+            jellysave3.SetActive(true);
+        }
+        if (score == 3)
+        {
+            jellysave1.SetActive(true);
+            jellysave3.SetActive(true);
+            dest.SetActive(false);
+        }
+    }
+    public void Jelly3()
+    {
+
+        jellysave3.SetActive(true);
+        dest.SetActive(true);
+        if (score == 2 && numm == 1)
+        {
+            jellysave1.SetActive(true);
+        }
+        if (score == 2 && numm == 2)
+        {
+            jellysave2.SetActive(true);
+        }
+        if (score == 3)
+        {
+            jellysave1.SetActive(true);
+            jellysave2.SetActive(true);
+            dest.SetActive(false);
+        }
+    }
+
+    public void JellyNo()
+    {
+        jellysave1.SetActive(false);
+        jellysave2.SetActive(false);
+        jellysave3.SetActive(false);
+        dest.SetActive(false);
+    }
+
+
+
+
 
 }
