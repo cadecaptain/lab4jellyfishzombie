@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3546177193631989214}
   - component: {fileID: 3546177193631989210}
   - component: {fileID: 3546177193631989211}
-  - component: {fileID: 3546177193631989189}
+  - component: {fileID: 6323945287243471787}
   m_Layer: 0
   m_Name: main jellyfish
   m_TagString: Player
@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3546177193631989215}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2, y: -0.9, z: -4}
+  m_LocalPosition: {x: -3.73, y: -4.47, z: -4}
   m_LocalScale: {x: 5.4287243, y: 6.185268, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -155,7 +155,7 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
---- !u!114 &3546177193631989189
+--- !u!114 &6323945287243471787
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -164,8 +164,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 3546177193631989215}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 394e011e23b754b5f971bd0367b27d37, type: 3}
+  m_Script: {fileID: 11500000, guid: 34ff544f22715477d9b5d01e67f4d8c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  runSpeed: 10
+  runSpeed: 5
+  rotateSpeed: 5
   projectile: {fileID: 177318343377325780, guid: c96a7925e35428d44bddb104977bab4a, type: 3}

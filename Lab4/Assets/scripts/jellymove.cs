@@ -29,6 +29,7 @@ public class jellymove : MonoBehaviour
 
 		if (Input.GetKeyDown("space"))
 		{
+
 			//Quaternion.Euler(0,0,90 + transform.rotation.z)
 			GameObject clone = Instantiate(projectile, transform.position, transform.rotation);
 			clone.transform.Rotate(new Vector3(0, 0, 90));

@@ -15,6 +15,7 @@ public class FollowSteer : MonoBehaviour
 	void Start()
 	{
 		body = GetComponent<Rigidbody2D>();
+		target = GameObject.FindWithTag("Player");
 	}
 
 	// Update is called once per frame

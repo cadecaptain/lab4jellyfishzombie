@@ -4,8 +4,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Level1 : MonoBehaviour
+{ 
+    
+    public Vector3 whereTo;
 
-{
     // Start is called before the first frame update
     void Start()
     {
@@ -22,18 +24,11 @@ public class Level1 : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Player"))
         {
-
-            StartCoroutine(LoadYourAsyncScene("Level1"));
+            GameManager.Instance.NextScene("level1", whereTo);
+           
         }
 
     }
 
-    IEnumerator LoadYourAsyncScene(string scene)
-    {
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(scene);
-        while (!asyncLoad.isDone)
-        {
-            yield return null;
-        }
-    }
-}
+  
+} 

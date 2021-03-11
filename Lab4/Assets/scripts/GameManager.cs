@@ -17,6 +17,13 @@ public class GameManager : MonoBehaviour
     public GameObject title;
     public GameObject backgroundImage;
     public GameObject sourcesText;
+    public GameObject player;
+    public GameObject camera;
+    public Vector3 pos;
+    public Vector3 nextPlayerLoc;
+    public GameObject projectile;
+    public GameObject dialoguebox;
+    public GameObject dialoguetext;
 
     public GameObject instructionsText;
     private void Awake()
@@ -27,6 +34,9 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
             DontDestroyOnLoad(canvas);
             DontDestroyOnLoad(events);
+            DontDestroyOnLoad(player);
+            DontDestroyOnLoad(camera);
+            DontDestroyOnLoad(projectile);
 
         }
         else
@@ -37,13 +47,14 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        player.SetActive(false);
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+       
     }
 
     public void InstructionsButton()
@@ -77,22 +88,24 @@ public class GameManager : MonoBehaviour
         instructionsButton.SetActive(false);
         sourcesButton.SetActive(false);
         title.SetActive(false);
-        
-        StartCoroutine(LoadYourAsyncScene("centralhub"));
+        player.SetActive(true);
+        StartCoroutine(LoadYourAsyncScenee("centralhub"));
       
         instructionsText.GetComponent<TextMeshProUGUI>().text = "";
         sourcesText.GetComponent<TextMeshProUGUI>().text = "";
        
         
     }
-    IEnumerator LoadYourAsyncScene(string scene)
+    IEnumerator LoadYourAsyncScene(string scene, Vector3 whereTo)
     {
+        nextPlayerLoc = whereTo;
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(scene);
         while (!asyncLoad.isDone)
         {
             yield return null;
         }
-        StartCoroutine(ColorLerp(new Color(1, 1, 1, 0), 2));
+        player.transform.position = nextPlayerLoc;
+       
     }
 
 
@@ -109,6 +122,33 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
         sprite.color = endValue;
+    }
+    public void NextScene(string whichScene, Vector3 whereTo)
+    {
+
+
+        StartCoroutine(LoadYourAsyncScene(whichScene, whereTo));
+
+    }
+
+    IEnumerator LoadYourAsyncScenee(string scene)
+    {
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(scene);
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
+    }
+
+    public void startdialogue(string text)
+    {
+        dialoguebox.SetActive(true);
+        dialoguetext.GetComponent<TextMeshProUGUI>().text = text;
+    }
+
+    public void hidedialogue()
+    {
+        dialoguebox.SetActive(false);
     }
 
 }
