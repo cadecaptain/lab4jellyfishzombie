@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class FollowSteer : MonoBehaviour
 {
 
-	public GameObject target;
+	private GameObject target;
+	private float tarDist;
 	public float speed;
 	public float rotationSpeed;
+	private bool tarActive = false;
 
 	private Rigidbody2D body;
 
@@ -15,27 +18,40 @@ public class FollowSteer : MonoBehaviour
 	void Start()
 	{
 		body = GetComponent<Rigidbody2D>();
-		target = GameObject.FindWithTag("Player");
+		target = GameManager.Instance.GetPlayer();
+		tarDist = 8;
+
+		
+	}
+	// Update is called once per frame
+	void Update()
+	{
+		
+		if (Physics2D.OverlapCircleAll(transform.position, tarDist).Contains(target.GetComponent<Collider2D>())) {
+			tarActive = true;
+		}
 	}
 
 	// Update is called once per frame
 	void FixedUpdate()
 	{
-		Vector2 desired = (target.transform.position - transform.position).normalized;
-		body.AddForce(desired * speed - body.velocity);
+		if (tarActive)
+		{
 
-		float angle = (Mathf.Atan2(desired.y, desired.x) * Mathf.Rad2Deg) - 90;
-		Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
-		transform.rotation = Quaternion.Slerp(transform.rotation,
-			q, Time.deltaTime * rotationSpeed);
+			Vector2 desired = (target.transform.position - transform.position).normalized;
+			body.AddForce(desired * speed - body.velocity);
+
+			float angle = (Mathf.Atan2(desired.y, desired.x) * Mathf.Rad2Deg) - 90;
+			Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
+			transform.rotation = Quaternion.Slerp(transform.rotation,
+				q, Time.deltaTime * rotationSpeed);
+		}
 
 	}
 	private void OnCollisionEnter2D(Collision2D collider)
 	{
-		Debug.Log("f");
 		if (collider.gameObject.CompareTag("Player"))
 		{
-			Debug.Log("s");
 			GameManager.Instance.PlayerHit();
 		}
 	}

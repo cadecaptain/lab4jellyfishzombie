@@ -261,6 +261,10 @@ public class GameManager : MonoBehaviour
         jellysave3.SetActive(false);
         dest.SetActive(false);
     }
+    public GameObject GetPlayer()
+    {
+        return player;
+    }
 
 
 
