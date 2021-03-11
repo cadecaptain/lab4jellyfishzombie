@@ -14,6 +14,10 @@ GameObject:
   - component: {fileID: 3546177193631989210}
   - component: {fileID: 3546177193631989211}
   - component: {fileID: 6323945287243471787}
+  - component: {fileID: 4468881813227406057}
+  - component: {fileID: 7600419224343579298}
+  - component: {fileID: 1175938264693573046}
+  - component: {fileID: 3022522919374093970}
   m_Layer: 0
   m_Name: main jellyfish
   m_TagString: Player
@@ -133,7 +137,7 @@ EdgeCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3546177193631989215}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -170,3 +174,98 @@ MonoBehaviour:
   runSpeed: 5
   rotateSpeed: 5
   projectile: {fileID: 177318343377325780, guid: c96a7925e35428d44bddb104977bab4a, type: 3}
+--- !u!70 &4468881813227406057
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3546177193631989215}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.030578412}
+  m_Size: {x: 0.50000006, y: 0.43884313}
+  m_Direction: 0
+--- !u!58 &7600419224343579298
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3546177193631989215}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.047568556}
+  serializedVersion: 2
+  m_Radius: 0.1603942
+--- !u!61 &1175938264693573046
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3546177193631989215}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.000000014901161, y: 0.009956211}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.5, y: 0.5}
+    newSize: {x: 0.5, y: 0.5}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.4294171, y: 0.20131382}
+  m_EdgeRadius: 0
+--- !u!60 &3022522919374093970
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3546177193631989215}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.5, y: 0.5}
+    newSize: {x: 0.5, y: 0.5}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.079707146, y: 0.11407512}
+      - {x: -0.076063305, y: 0.11131236}
+      - {x: -0.13404225, y: 0.09029943}
+      - {x: -0.19710374, y: 0.051036358}
+      - {x: -0.22185278, y: 0.022273958}
+      - {x: -0.2181114, y: -0.03431622}
+      - {x: -0.17393284, y: -0.077497065}
+      - {x: -0.073330015, y: -0.08049889}
+      - {x: 0.14842296, y: -0.07808235}
+      - {x: 0.21722937, y: -0.045350365}
+      - {x: 0.21975018, y: 0.03415031}
+      - {x: 0.17943741, y: 0.07867524}

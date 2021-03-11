@@ -171,7 +171,11 @@ public class GameManager : MonoBehaviour
         hearts[playerLife].enabled = false;
         if (playerLife == 0)
         {
-            NextScene("centralhub",new Vector3(0,0,0));
+            NextScene(SceneManager.GetActiveScene().name,new Vector3(0,0,0));
+            playerLife = 3;
+            foreach (Image i in hearts) {
+                i.enabled = true;
+            }
         }
 
     }

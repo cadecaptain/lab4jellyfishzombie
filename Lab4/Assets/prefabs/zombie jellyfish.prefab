@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3295311477932522284}
   - component: {fileID: 3295311477932522287}
   - component: {fileID: 3295311477932522286}
+  - component: {fileID: 8902000535471310763}
   m_Layer: 0
   m_Name: zombie jellyfish
   m_TagString: Enemy
@@ -148,7 +149,7 @@ EdgeCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3295311477932522288}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -171,3 +172,36 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!60 &8902000535471310763
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3295311477932522288}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.5, y: 0.5}
+    newSize: {x: 0.5, y: 0.5}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.1848955, y: 0.13020131}
+      - {x: -0.25, y: 0.05988781}
+      - {x: -0.25520903, y: -0.06769329}
+      - {x: -0.21875401, y: -0.09633511}
+      - {x: 0.21614951, y: -0.09893961}
+      - {x: 0.24479099, y: -0.059876114}
+      - {x: 0.24479102, y: 0.06509681}
+      - {x: 0.182291, y: 0.1223878}
