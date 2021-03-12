@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
     public GameObject dest;
     private GameObject instance;
     public Image[] hearts;
+    private bool[] heartEnabled;
     private int playerLife = 3;
 
     public GameObject instructionsText;
@@ -59,6 +60,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         player.SetActive(false);
+        heartEnabled = new bool[hearts.Length];
 
     }
 
@@ -105,11 +107,13 @@ public class GameManager : MonoBehaviour
       
         instructionsText.GetComponent<TextMeshProUGUI>().text = "";
         sourcesText.GetComponent<TextMeshProUGUI>().text = "";
-        foreach(Image i in hearts ){
-            i.enabled = true;
-        }
-       
         
+       for(int i = 0; i < hearts.Length; i++ ){
+            heartEnabled[i] = true;
+        }
+        StartCoroutine(DisplayHearts());
+
+
     }
     IEnumerator LoadYourAsyncScene(string scene, Vector3 whereTo)
     {
@@ -170,13 +174,15 @@ public class GameManager : MonoBehaviour
 
         playerLife--;
         hearts[playerLife].enabled = false;
+        heartEnabled[playerLife] = false;
         if (playerLife == 0)
         {
             NextScene(SceneManager.GetActiveScene().name,new Vector3(0,0,0));
             playerLife = 3;
-            foreach (Image i in hearts) {
-                i.enabled = true;
+            for (int i = 0; i < hearts.Length; i ++) {
+                heartEnabled[i] = true;
             }
+            StartCoroutine(DisplayHearts());
         }
 
     }
@@ -265,6 +271,15 @@ public class GameManager : MonoBehaviour
     public GameObject GetPlayer()
     {
         return player;
+    }
+    IEnumerator DisplayHearts()
+    {
+        for (int i = 0; i < hearts.Length; i++ ) {
+            if (heartEnabled[i]) {
+                yield return new WaitForSeconds(.5f);
+                hearts[i].enabled = true;
+            }
+        }
     }
 
     public void AddFish()

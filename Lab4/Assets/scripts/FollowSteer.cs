@@ -53,6 +53,7 @@ public class FollowSteer : MonoBehaviour
 		if (collider.gameObject.CompareTag("Player"))
 		{
 			GameManager.Instance.PlayerHit();
+			gameObject.SetActive(false);
 		}
 	}
 }
