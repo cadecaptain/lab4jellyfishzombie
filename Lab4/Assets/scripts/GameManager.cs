@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public GameObject title;
     private int score = 0;
     private int numm = 0;
+    private int fish = 0;
     public GameObject backgroundImage;
     public GameObject sourcesText;
     public GameObject player;
@@ -266,8 +267,18 @@ public class GameManager : MonoBehaviour
         return player;
     }
 
+    public void AddFish()
+    {
+        fish++;
+        GameWin();
+    }
 
-
-
+    public void GameWin()
+    {
+        if (fish > 22)
+        {
+            NextScene("startmenu", Vector3.zero);
+        }
+    }
 
 }

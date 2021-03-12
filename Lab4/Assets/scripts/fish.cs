@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class fish : MonoBehaviour
 {
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +15,14 @@ public class fish : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.gameObject.CompareTag("Player"))
+        {
+            GameManager.Instance.AddFish();
+            Destroy(this.gameObject);
+        }
     }
 }
