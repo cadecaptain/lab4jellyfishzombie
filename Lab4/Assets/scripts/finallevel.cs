@@ -24,7 +24,11 @@ public class finallevel : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             GameManager.Instance.JellyNo();
-            GameManager.Instance.NextScene("finallevel", whereTo);
+            if (GameManager.Instance.GetScore() == 3) 
+            {
+                GameManager.Instance.NextScene("finallevel", whereTo);
+            }
+
 
         }
 

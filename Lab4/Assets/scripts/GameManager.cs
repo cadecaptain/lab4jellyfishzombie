@@ -275,10 +275,15 @@ public class GameManager : MonoBehaviour
 
     public void GameWin()
     {
-        if (fish > 22)
+        if (fish > 23)
         {
             NextScene("startmenu", Vector3.zero);
         }
+    }
+
+    public int GetScore()
+    {
+        return score;
     }
 
 }
