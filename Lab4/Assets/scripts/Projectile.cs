@@ -52,6 +52,7 @@ public class Projectile : MonoBehaviour
         if (collider.gameObject.CompareTag("Enemy"))
         {
            collider.gameObject.SetActive(false);
+            GameManager.Instance.PlayZap();
             gameObject.SetActive(false);
         }
         else if (!collider.gameObject.CompareTag("Player"))

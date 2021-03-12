@@ -11,6 +11,7 @@ public class jellymove : MonoBehaviour
 	private float horizontal;
 	private float vertical;
 	private Rigidbody2D body;
+	private AudioSource sound; 
 
 	public GameObject projectile;
 
@@ -19,6 +20,7 @@ public class jellymove : MonoBehaviour
 	void Start()
 	{
 		body = GetComponent<Rigidbody2D>();
+		sound = GetComponent<AudioSource>();
 	}
 
 	// Update is called once per frame
@@ -34,6 +36,18 @@ public class jellymove : MonoBehaviour
 			GameObject clone = Instantiate(projectile, transform.position, transform.rotation);
 			clone.transform.Rotate(new Vector3(0, 0, 90));
 			clone.GetComponent<Rigidbody2D>().velocity = clone.transform.right * 20;
+			GameManager.Instance.PlayProj();
+		}
+		if (horizontal != 0 || vertical != 0)
+		{
+			if (!sound.isPlaying)
+			{
+				sound.Play();
+			}
+		}
+		else
+		{
+			sound.Stop();
 		}
 	}
 

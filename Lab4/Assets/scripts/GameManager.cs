@@ -38,6 +38,9 @@ public class GameManager : MonoBehaviour
     public Image[] hearts;
     private bool[] heartEnabled;
     private int playerLife = 3;
+    private AudioSource sound;
+    public AudioClip zap;
+    public AudioClip proj;
 
     public GameObject instructionsText;
     private void Awake()
@@ -63,13 +66,16 @@ public class GameManager : MonoBehaviour
     {
         player.SetActive(false);
         heartEnabled = new bool[hearts.Length];
+        sound = GetComponent<AudioSource>();
 
     }
 
     // Update is called once per frame
     void Update()
     {
-       
+        if (!sound.isPlaying) {
+            sound.Play();
+        }
     }
 
     public void InstructionsButton()
@@ -331,6 +337,15 @@ public class GameManager : MonoBehaviour
     public int GetScore()
     {
         return score;
+    }
+    public void PlayZap()
+    {
+        
+        GetComponent<AudioSource>().PlayOneShot(zap,1);
+    }
+    public void PlayProj()
+    {
+        GetComponent<AudioSource>().PlayOneShot(proj,1);
     }
 
 }
