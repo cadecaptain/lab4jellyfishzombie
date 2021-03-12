@@ -96,8 +96,9 @@ public class GameManager : MonoBehaviour
         instructionsButton.SetActive(false);
         sourcesButton.SetActive(false);
         title.SetActive(false);
- 
-        sourcesText.GetComponent<TextMeshProUGUI>().text = "rock: https://pixy.org/203104/ popcorn: https://opengameart.org/content/popcorn-icon ship: https://opengameart.org/content/ufo-boss-set tilemap: https://soulares.itch.io/moonroar-cave-field shovel: https://opengameart.org/content/shovel-1 astronaut: https://marmoset.co/posts/sprite-sheet-creation-in-hexels/ sign: https://opengameart.org/content/lpc-sign-post";
+
+        sourcesText.GetComponent<TextMeshProUGUI>().text = "fish: https://opengameart.org/content/anglerfish tileset: https://scut.itch.io/7drl-tileset-2018?download jellyfish: https://opengameart.org/content/primary-jellies music: https://freesound.org/people/soundmatch24/sounds/186876/ zap: https://freesound.org/people/michael_grinnell/sounds/512471/" +
+        "projectile fire:https://freesound.org/people/TRNGLE/sounds/367960/ swimming: https://freesound.org/people/Robinhood76/sounds/317067/ bubbles: https://freesound.org/people/MattJ99/sounds/66787/ font: https://www.dafont.com/scary-monster.font";
 
 
     }
