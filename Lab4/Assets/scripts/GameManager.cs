@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     private int numm = 0;
     private int fish = 0;
     public GameObject backgroundImage;
+    public GameObject black;
     public GameObject sourcesText;
     public GameObject player;
     public GameObject camera;
@@ -95,8 +96,8 @@ public class GameManager : MonoBehaviour
     }
     public void StartButton()
     {
-  
-        StartCoroutine(ColorLerp(new Color(1, 1, 1, 0), 2));
+        
+        //StartCoroutine(ColorLerp(new Color(1, 1, 1, 0), 2,backgroundImage));
         startButton.SetActive(false);
         instructionsButton.SetActive(false);
         sourcesButton.SetActive(false);
@@ -111,28 +112,45 @@ public class GameManager : MonoBehaviour
        for(int i = 0; i < hearts.Length; i++ ){
             heartEnabled[i] = true;
         }
-        StartCoroutine(DisplayHearts());
+        
 
 
     }
     IEnumerator LoadYourAsyncScene(string scene, Vector3 whereTo)
     {
         nextPlayerLoc = whereTo;
+        if (!SceneManager.GetActiveScene().name.Equals("Start"))
+        {
+            StartCoroutine(ColorLerp(new Color(0, 0, 0, 1), .5f,black));
+            while (!black.GetComponent<Image>().color.Equals(new Color(0, 0, 0, 1)))
+            {
+                yield return null;
+            }
+            foreach (Image image in hearts) {
+                image.enabled = false;
+            }
+        }
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(scene);
         while (!asyncLoad.isDone)
         {
             yield return null;
         }
         player.transform.position = nextPlayerLoc;
-       
+        StartCoroutine(ColorLerp(new Color(0, 0, 0, 0), 1,black));
+        while (!black.GetComponent<Image>().color.Equals(new Color(0, 0, 0, 0)))
+        {
+            yield return null;
+        }
+        StartCoroutine(DisplayHearts());
+
     }
 
 
 
-    IEnumerator ColorLerp(Color endValue, float duration)
+    IEnumerator ColorLerp(Color endValue, float duration,GameObject pic)
     {
         float time = 0;
-        Image sprite = backgroundImage.GetComponent<Image>();
+        Image sprite = pic.GetComponent<Image>();
         Color startValue = sprite.color;
         while (time < duration)
         {
@@ -157,6 +175,12 @@ public class GameManager : MonoBehaviour
         {
             yield return null;
         }
+        StartCoroutine(ColorLerp(new Color(1, 1, 1, 0), 2, backgroundImage));
+        while (!backgroundImage.GetComponent<Image>().color.Equals(new Color(1, 1, 1, 0)))
+        {
+            yield return null;
+        }
+        StartCoroutine(DisplayHearts());
     }
 
     public void startdialogue(string text)
