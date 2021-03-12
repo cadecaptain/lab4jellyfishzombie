@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
     public GameObject dialoguebox;
     public GameObject dialoguetext;
     public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI fishText;
     public GameObject jellysave1;
     public GameObject jellysave2;
     public GameObject jellysave3;
@@ -309,13 +310,20 @@ public class GameManager : MonoBehaviour
     public void AddFish()
     {
         fish++;
+        FishText();
         GameWin();
+    }
+
+    public void FishText()
+    {
+        fishText.text = "Fish collected for family: " + fish + "/24";
     }
 
     public void GameWin()
     {
         if (fish > 23)
         {
+            fishText.text = "";
             NextScene("startmenu", Vector3.zero);
         }
     }
